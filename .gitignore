@@ -1,0 +1,54 @@
+# ======================
+# Maven / Java
+# ======================
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# ======================
+# IDEs
+# ======================
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Environment / Secrets
+# ======================
+.env
+*.pem
+*.key
+*.crt
+*.p12
+
+# ======================
+# Node / Frontend (por si usas algo extra)
+# ======================
+node_modules/
+
+# ======================
+# Build / Temp
+# ======================
+dist/
+build/
+out/
+
+# ======================
+# AWS / Configs sensibles
+# ======================
+*.properties.local
+application-local.properties
