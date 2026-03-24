@@ -82,6 +82,45 @@ java -jar SecureSpring-1.0-SNAPSHOT.jar
 ```bash
 /var/www/html/
 ```
+- `index.html`
+```
+<html>
+<head>
+    <title>Secure App</title>
+</head>
+<body>
+
+<h2>Login Seguro</h2>
+
+<input id="user" placeholder="Usuario">
+<input id="pass" type="password" placeholder="Contraseña">
+
+<button onclick="login()">Login</button>
+
+<p id="res"></p>
+
+<script>
+async function login() {
+    const response = await fetch("https://ec2-54-173-38-174.compute-1.amazonaws.com:5000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: document.getElementById("user").value,
+            password: document.getElementById("pass").value
+        })
+    });
+
+    const text = await response.text();
+    document.getElementById("res").innerText = text;
+}
+</script>
+
+</body>
+</html>
+
+```
 
 * Enable HTTPS with Certbot:
 
@@ -154,9 +193,28 @@ Login exitoso
 ## Repository Structure
 
 ```
-backend/
-frontend/
-screenshots/
-README.md
-.gitignore
+SecureSpring/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── edu/
+│   │   │       └── eci/
+│   │   │           └── securespring/
+│   │   │               ├── Secureweb.java
+│   │   │               ├── HelloController.java
+│   │   │               ├── LoginController.java
+│   │   │               └── SecurityConfig.java
+│   │   │
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── keystore/
+│   │           ├── ecikeystore.p12
+│   │           ├── ecicert.cer
+│   │           └── myTrustStore
+│   │
+│   └── test/
+│
+├── pom.xml
+└── README.md
 ```
